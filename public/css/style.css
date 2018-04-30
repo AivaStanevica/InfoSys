@@ -1,0 +1,62 @@
+/*ALL*/
+/*main{*/
+    /*margin-left:190px;*/
+/*}*/
+@media screen and (max-width: 992px) {
+    main{
+        margin-left:0px;
+    }
+}
+
+
+
+/*NAVIGATION*/
+.firstNav{
+    height: 100%;
+    width: 40px;
+    position: fixed;
+    z-index: 1;
+    background-color: #6AC8F2;
+}
+.secondNav{
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    background-color: #7AD3FF;
+    margin-left:40px;
+}
+#topNav{
+    display: none;
+    font-size:20px;
+    width: 100%;
+    background-color: #1559A6;
+    color:white;
+}
+@media screen and (max-width: 992px) {
+     #nav{
+        display: none;
+        position: absolute;
+        z-index: 99;
+    }
+    .firstNav, .secondNav{
+        height: calc(100% - 20px);
+    }
+    #topNav{
+        display: block;
+        position: relative;
+    }
+}
+.firstNav .list-group-item, .secondNav .list-group-item{
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    color:black;
+}
+.firstNav .list-group-item:hover, .secondNav .list-group-item:hover{
+    background-color:#1C74D9;
+}
+.nav .logOut{
+    position: absolute;
+    bottom:5px;
+    left:0;
+}

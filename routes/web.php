@@ -12,5 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/finance', function () {
+    return view('finance.show');
+})->name('finance');
+
+Route::get('/profile', function () {
+    return view('profile.profile');
+});
+
+Route::get('/users', 'UsersController@index')->name('users_list');
