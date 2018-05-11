@@ -7,9 +7,9 @@
 
 
         <a href="{{ route('finance') }}" class="list-group-item list-group-item-action"><i class="fas fa-euro-sign"></i></a>
-        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-box"></i></a>
+        <a href="{{ route('inventory') }}" class="list-group-item list-group-item-action"><i class="fas fa-box"></i></a>
         <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-folder"></i></a>
-        <a href="{{ route('users_list') }}" class="list-group-item list-group-item-action"><i class="fas fa-user"></i></a>
+        <a href="{{ route('user', Auth::user()->id) }}" class="list-group-item list-group-item-action"><i class="fas fa-user"></i></a>
         <a class="logOut list-group-item list-group-item-action" href="{{ route('logout') }}"
            onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -19,8 +19,7 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
-
+    @yield('menu')
 
     </div>
-    @yield('menu')
 </div>

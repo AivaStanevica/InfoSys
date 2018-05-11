@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('user.index')
 
 @section('content')
     <div class="container">
@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        You are logged in!
+                        Permissions!
                     </div>
                 </div>
             </div>
@@ -22,11 +22,3 @@
     </div>
 @endsection
 
-@section('menu')
-    <div class="secondNav list-group">
-        <a href="#" class="list-group-item list-group-item-action">Profils</a>
-        <a href="#" class="list-group-item list-group-item-action">Lietotāji</a>
-        <a href="#" class="list-group-item list-group-item-action">Tiesības</a>
-        <a href="#" class="list-group-item list-group-item-action">Lomas</a>
-    </div>
-@endsection

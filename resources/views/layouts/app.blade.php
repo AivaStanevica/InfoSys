@@ -32,7 +32,7 @@
         @include('layouts.main_nav')
         @endauth
         <main class="py-4" id="main">
-            @yield('content')
+            @yield('section')
         </main>
     </div>
 </body>

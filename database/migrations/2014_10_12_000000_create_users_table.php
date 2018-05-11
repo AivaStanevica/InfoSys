@@ -20,10 +20,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('role_id')->default(2);
-            $table->integer('phone')->nullable();
-            $table->string('stundent_id')->nullable();
+            $table->text('direction')->nullable();
+            $table->text('phone')->nullable();
+            $table->string('student_id')->nullable();
+            $table->integer('course')->nullable();
+            $table->string('study_program')->nullable();
             $table->string('email2')->nullable();
             $table->text('description')->nullable();
+            $table->text('addition')->nullable();
             $table->string('bank_account')->nullable();
             $table->text('address')->nullable();
             $table->string('person_code')->nullable();

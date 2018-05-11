@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        Finance!
+                        Inventory!
                     </div>
                 </div>
             </div>

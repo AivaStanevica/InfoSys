@@ -25,12 +25,15 @@
     background-color: #7AD3FF;
     margin-left:40px;
 }
-#topNav{
+.topNav{
     display: none;
     font-size:20px;
     width: 100%;
     background-color: #1559A6;
     color:white;
+}
+#topNav{
+    cursor: pointer;
 }
 @media screen and (max-width: 992px) {
      #nav{
@@ -41,7 +44,7 @@
     .firstNav, .secondNav{
         height: calc(100% - 20px);
     }
-    #topNav{
+    .topNav{
         display: block;
         position: relative;
     }
