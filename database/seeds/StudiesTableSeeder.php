@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Studies;
 
 class StudiesTableSeeder extends Seeder
 {
@@ -11,9 +12,11 @@ class StudiesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('studies')->insert(
-            [
-                'study_program' =>'Programmēšana un datortīklu administrēšana','Datorzinātnes Bakalaura','Datorzinātnes Maģistra','Datorzinātnes Doktora'
-            ]);
+
+        $studyPrograms= ['Programmēšana un datortīklu administrēšana','Datorzinātnes Bakalaura','Datorzinātnes Maģistra','Datorzinātnes Doktora'];
+
+        foreach ($studyPrograms as $studyProgram)
+
+        Studies::create(['study_program'=>$studyProgram]);
     }
 }

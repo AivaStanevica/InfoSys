@@ -55,7 +55,7 @@
     border: none;
     color:black;
 }
-.firstNav .list-group-item:hover, .secondNav .list-group-item:hover{
+.firstNav .list-group-item-action:hover, .secondNav .list-group-item-action:hover{
     background-color:#1C74D9;
 }
 .nav .logOut{

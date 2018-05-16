@@ -64,10 +64,19 @@ Route::get('/permissions', function () {
  * Finance routes
  */
 
-Route::get('/finance', function () {
-    return view('finance.show');
-})->name('finance')->middleware('auth');
+Route::get('/finance/{id?}', 'TransactionsController@show')->name('finance')->middleware('auth');
 
+Route::post('/finance/.*', 'FinanceController@store')->name('financeStore')->middleware('auth');
+
+Route::post('/finance', 'TransactionsController@store')->name('transactionStore')->middleware('auth');
+
+
+/*
+ * Project routes
+ */
+Route::get('/projects/{id?}', 'ProjectsController@show')->name('project')->middleware('auth');
+
+Route::post('/projects', 'ProjectsController@store')->name('projectStore')->middleware('auth');
 /*
  * Inventory routes
  */

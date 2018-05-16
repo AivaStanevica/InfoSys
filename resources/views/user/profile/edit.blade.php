@@ -38,7 +38,7 @@
                                     <label for="phoneNr">Telefons</label>
                                     <input type="text" class="form-control" id="phoneNr" name="phoneNr" value="{{$user->phone}}" required>
                                 </div>
-                                <div class="form-group col-md-6 col-lg-2">
+                                <div class="form-group col-md-5 col-lg-2">
                                     <label for="studentId">Stud. apliecības numurs</label>
                                     <input type="text" class="form-control" id="studentId" name="studentId" value="{{$user->student_id}}" required>
                                 </div>
@@ -50,7 +50,7 @@
                                         @endfor
                                     </select>
                                 </div>
-                                <div class="form-group col-md-4 col-lg-3">
+                                <div class="form-group col-md-5 col-lg-3">
                                     <label for="">Studiju programma</label>
                                     <select id="studyProgram" class="form-control" name="studyProgram">
                                         @foreach($studies as $study)

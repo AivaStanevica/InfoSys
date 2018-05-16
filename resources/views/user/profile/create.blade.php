@@ -15,7 +15,7 @@
                                 @endforeach
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('userStore')}}">
+                        <form method="POST" action="{{ route('transactionStore')}}">
 
                         {{csrf_field()}}
                             <div class="form-row">

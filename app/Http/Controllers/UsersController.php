@@ -93,8 +93,8 @@ class UsersController extends Controller
             'phoneNr'=>'required',
             'studentId'=>'required',
             'email2'=>'required|email',
-            'newPassword'=>'required|same:newPasswordComformation',
-            'newPasswordComformation'=>'required'
+            'newPassword'=>'same:newPasswordComformation',
+            'newPasswordComformation'
         ]);
 
         $user->update([
@@ -113,7 +113,7 @@ class UsersController extends Controller
             'person_code'=>request('personCode'),
         ]);
 
-        if(!empty($request->input('newPassword')))
+        if(!empty($request->input('newPassword','newPasswordComformation')))
         {
             $user->update([
 //                'password' => Hash::make(request('newPassword'))

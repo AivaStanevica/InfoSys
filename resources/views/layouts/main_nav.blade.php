@@ -6,7 +6,7 @@
         {{--</button>--}}
 
 
-        <a href="{{ route('finance') }}" class="list-group-item list-group-item-action"><i class="fas fa-euro-sign"></i></a>
+        <a href="{{ route('finance',1) }}" class="list-group-item list-group-item-action"><i class="fas fa-euro-sign"></i></a>
         <a href="{{ route('inventory') }}" class="list-group-item list-group-item-action"><i class="fas fa-box"></i></a>
         <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-folder"></i></a>
         <a href="{{ route('user', Auth::user()->id) }}" class="list-group-item list-group-item-action"><i class="fas fa-user"></i></a>
