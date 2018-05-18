@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
@@ -26,6 +28,11 @@ class UsersController extends Controller
 
         return view('user.list.expand',compact('users','roles'));
 
+    }
+    public function showPending(){
+        $users = User::all();
+
+        return view('user.list.pending',compact('users'));
     }
 
     public function show($id){
@@ -68,7 +75,7 @@ class UsersController extends Controller
             'password' => Hash::make(request('newPassword'))
         ]);
 
-         return view('user.profile.create');
+        return redirect()->back();
     }
 
     public function edit($id){
@@ -82,9 +89,6 @@ class UsersController extends Controller
 
     public function update(Request $request, $id){
         $user = User::find($id);
-        $roles = Role::all();
-        $studies = Studies::all();
-        $directions = Direction::all();
 
         $this->validate($request, [
             'userName' => 'required',
@@ -123,6 +127,30 @@ class UsersController extends Controller
         $user->save();
 
 
-        return view('user.profile.edit',compact('user','roles','studies','directions'));
+        return redirect()->back();
+    }
+
+    public function destroy(Request $request){
+
+        $id=$request->input('id');
+
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back()->with('success','Information has been  deleted');
+    }
+
+    public function active(Request $request){
+
+        $id=$request->input('id');
+        $user = User::find($id);
+        if($request->input('active')==0){
+            $user->update(['active'=>'1']);
+        }
+        if($request->input('active')==1){
+            $user->update(['active'=>'0']);
+        }
+        $user->save();
+
+        return redirect()->back();
     }
 }

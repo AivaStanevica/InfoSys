@@ -9,6 +9,7 @@
 
                         <h1>Mans Profils</h1>
                         <hr>
+                        @can('show_profile')
                         @if($errors->any())
                             <div class="alert alert-danger">
                                 @foreach($errors->all() as $error)
@@ -127,6 +128,7 @@
 
 
                         </form>
+                        @endcan
                     </div>
                 </div>
             </div>

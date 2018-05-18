@@ -6,33 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+    protected $guarded = [''];
+
     /**
      * Get the users for the roles.
      */
     public function users(){
         return $this->hasMany('App\User');
-    }
-
-    public function hasAnyPermission($permissions){
-        if(is_array($permissions)){
-            foreach ($permissions as $permission){
-                if($this->hasPermission($permission)){
-                    return true;
-                }
-            }
-        } else{
-            if($this->hasPermission($permissions)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function hasPermission($permission){
-        if($this->permissions()->where('name', $permission)->first()){
-            return true;
-        }
-        return false;
     }
 
 
@@ -42,5 +22,9 @@ class Role extends Model
 
     public function permissions(){
         return $this->belongsToMany('App\Permission');
+    }
+
+    public function givePermissionTo(Permission $permission){
+        return $this->permissions()->save($permission);
     }
 }

@@ -25,6 +25,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
+                                    @if($user->active==1)
                                 <tr>
                                     <th scope="row">{{$user->id}}</th>
                                     {{--<td>{{$user->role->name}} </td>--}}
@@ -35,8 +36,27 @@
                                     <td>{{$user->email2}}</td>
                                     <td>{{$user->phone}}</td>
                                     {{--<td><input type="checkbox" {{$user->roles->hasPermission('show_finance_entry') ? 'checked' : '' }} name="show_finance_entry"></td>--}}
-                                    <td><a href="{{ route('user',$user->id) }}"><i class="fas fa-user pr-2"></i></a><i class="fas fa-trash-alt"></i></td>
+                                    <td><a href="{{ route('user',$user->id) }}"><i class="fas fa-user pr-2"></i></a>
+                                        <form method="POST" action="{{ route('deleteUser',$user->id)}}">
+
+                                            {{csrf_field()}}
+                                            {{ method_field('DELETE') }}
+
+                                            <input name="id" value="{{$user->id}}" type="hidden">
+                                            <button type="submit" style="background: none; border:none"><i class="fas fa-trash-alt pr-2"></i></button>
+                                        </form>
+                                        <form method="POST" action="{{ route('active',$user->id)}}">
+
+                                            {{csrf_field()}}
+                                            {{ method_field('PATCH') }}
+
+                                            <input name="id" value="{{$user->id}}" type="hidden">
+                                            <input name="active" value="{{$user->active}}" type="hidden">
+                                            <button type="submit" style="background: none; border:none"><i class="fas fa-times"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
+                                @endif
                                 @endforeach
 
                                 </tbody>

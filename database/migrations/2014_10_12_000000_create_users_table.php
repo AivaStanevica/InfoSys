@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('bank_account')->nullable();
             $table->text('address')->nullable();
             $table->string('person_code')->nullable();
-            $table->string('photo')->nullable();
+            $table->boolean('active')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

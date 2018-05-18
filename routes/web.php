@@ -24,13 +24,14 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
  * Profile routes
  */
 
-Route::get('/profile/{user}', 'UsersController@edit')->name('user')->middleware('auth');
+Route::get('/profile/{user}', 'UsersController@edit')->name('user')->middleware('can:login');
 
-Route::get('/profile/create', 'UsersController@create')->name('userCreate')->middleware('auth');
+Route::get('/profile/create', 'UsersController@create')->name('userCreate');
 
 Route::post('/profile', 'UsersController@store')->name('userStore')->middleware('auth');
 
 Route::patch('/profile/{user}', 'UsersController@update')->name('userUpdate')->middleware('auth');
+
 
 /*
  * User list routes
@@ -39,6 +40,12 @@ Route::patch('/profile/{user}', 'UsersController@update')->name('userUpdate')->m
 Route::get('/users', 'UsersController@index')->name('usersList')->middleware('auth');
 
 Route::get('/users/expanded', 'UsersController@index2')->name('usersListExpanded')->middleware('auth');
+
+Route::delete('/users', 'UsersController@destroy')->name('deleteUser');
+
+Route::get('/users/pending', 'UsersController@showPending')->name('showPending');
+
+Route::patch('/users/pending', 'UsersController@active')->name('active');
 /*
  * Roles routes
  */

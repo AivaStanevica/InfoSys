@@ -12,8 +12,10 @@ class RolesController extends Controller
 {
     public function index(){;
         $roles = Role::all();
+        $users = User::all();
+        $perms= Permission::all();
 
-        return view('user.role.roles',compact('roles'));
+        return view('user.role.roles',compact('roles', 'users','perms'));
     }
 /*
 * PAGAIDU VARIANTS - VAJAG LABĀK!!!!!!!!!!!!!!!
@@ -35,11 +37,26 @@ class RolesController extends Controller
             'roleName' => 'required',
         ]);
 
-        User::create([
-            'name' => request('roleName'),
-            'description'=>request('description'),
-        ]);
+        $checkboxs=$request->input('perm');
 
-        return view('user.role.roles');
+        $role= new Role;
+
+        $role->name= $request->roleName;
+        $role->description = $request->description;
+
+        $role->save();
+
+        foreach ($checkboxs as $checkbox){
+            $role->permissions()->attach(['permission_id' => $checkbox]);
+        }
+
+
+//        Role::create([
+//            'name' => request('roleName'),
+//            'description'=>request('description'),
+//        ]);
+
+
+        return redirect()->route('roles');
     }
 }

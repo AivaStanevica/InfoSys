@@ -2,72 +2,85 @@
 
 @section('section')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+                    <h1>Izveidot profilu</h1>
+                    <hr>
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        {{csrf_field()}}
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-lg-4">
+                                <label for="userName">Vārds</label>
+                                <input type="text" class="form-control" id="userName" name="userName">
+                            </div>
+                            <div class="form-group col-md-6 col-lg-4">
+                                <label for="userSurname">Uzvārds</label>
+                                <input type="text" class="form-control" id="userSurname" name="userSurname">
+                            </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                            <div class="form-group col-md-6 col-lg-4">
+                                <label for="email">Epasts</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="form-group col-md-6 col-lg-4">
+                                <label for="phone">Telefons</label>
+                                <input type="text" class="form-control" id="phone" name="phone">
+                            </div>
+                            <div class="form-group col-md-6 col-lg-3">
+                                <label for="studentId">Stud. apliecības numurs</label>
+                                <input type="text" class="form-control" id="studentId" name="studentId">
+                            </div>
+                            <div class="form-group col-md-2 col-lg-1">
+                                <label for="">Kurss</label>
+                                <select id="course" class="form-control" name="course">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="studyProgram">Studiju programma</label>
+                                <select id="studyProgram" class="form-control" name="studyProgram">
+                                    <option value="Programmēšana un datortīklu administrēšana">Programmēšana un datortīklu administrēšana</option>
+                                    <option value="Datorzinātnes Bakalaura">Datorzinātnes Bakalaura</option>
+                                    <option value="Datorzinātnes Maģistra">Datorzinātnes Maģistra</option>
+                                    <option value="Datorzinātnes Doktora">Datorzinātnes Doktora</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12 col-lg-12">
+                                <label for="description">Apraksts/Spējās/Intereses</label>
+                                <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+                            </div>
 
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                        </div>
+                        <br>
+                        <h3>Parole</h3>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="password">Jaunā parole</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="password-confirm">Jaunās paroles atkārtojums</label>
+                                <input type="password" class="form-control" id="password-confirm" name="password_confirmation">
                             </div>
                         </div>
+                        <button type="submit" class="btn btn-primary">Saglabāt</button>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>

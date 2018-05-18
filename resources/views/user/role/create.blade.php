@@ -20,11 +20,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-4 col-lg-4">
                                     <label for="roleName">Lomas nosaukums</label>
-                                    <input type="text" class="form-control" id="userName" name="roleName">
+                                    <input type="text" class="form-control" id="roleName" name="roleName">
                                 </div>
                                 <div class="form-group col-md-8 col-lg-8">
                                     <label for="description">Apraksts</label>
-                                    <input type="text" class="form-control" id="description" name="roleName">
+                                    <input type="text" class="form-control" id="description" name="description">
                                 </div>
                             </div>
                                 <table class="table table-sm">
@@ -59,7 +59,7 @@
                                             <td>{{$perm->description}}</td>
                                             <td>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="user_{{$perm->id}}">
+                                                    <input type="checkbox" class="custom-control-input" name="perm[]" value="{{$perm->id}}" id="user_{{$perm->id}}">
                                                     <label class="custom-control-label" for="user_{{$perm->id}}"></label>
                                                 </div>
                                             </td>
@@ -83,7 +83,7 @@
                                                 <td>{{$perm->description}}</td>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="finance_{{$perm->id}}">
+                                                        <input type="checkbox" class="custom-control-input" name="perm[]" value="{{$perm->id}}" id="finance_{{$perm->id}}">
                                                         <label class="custom-control-label" for="finance_{{$perm->id}}"></label>
                                                     </div>
                                                 </td>

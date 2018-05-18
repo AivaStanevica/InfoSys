@@ -23,7 +23,7 @@
                                 @foreach($roles as $role)
                                     <tr>
                                         <th scope="row">{{$role->id}}</th>
-                                        {{--<td>{{$user->role->name}} </td>--}}
+                                        {{--<td>{{$user->role->permission->name}} </td>--}}
                                         <td>{{$role->name}}</td>
                                         <td>{{$role->description}}</td>
                                         <td><i class="fas fa-user pr-2"></i><i class="fas fa-trash-alt"></i></td>

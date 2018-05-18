@@ -5,39 +5,43 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h1>Lietotāji un lomas</h1>
+                        <h1>Neaktīvie lietotāji</h1>
                         <hr>
-                        <a href="{{ route('roles')}}" class="btn btn-primary mb-2 float-right">Lomu saraksts</a>
                         <div class="table-responsive">
                             <table class="table ">
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Vārds Uzvārds</th>
-                                    <th scope="col">Loma</th>
-                                    <th scope="col" class="text-center pr-2"><i class="fas fa-plus"></i></th>
+                                    <th scope="col">E-pasts</th>
+                                    <th scope="col" class="text-center pr-2"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
+                                    @if($user->active==0)
                                     <tr>
                                         <th scope="row">{{$user->id}}</th>
                                         <td>{{$user->name}}  {{$user->surname}}</td>
-                                        <td>
-                                            <select class="custom-select">
-                                                @foreach($roles as $role)
-                                                <option value="{{$role->id}}" @if ($role->id==$user->role->id) selected @endif>{{$role->name}}</option>
-                                                @endforeach
+                                        <td>{{$user->email}}</td>
+                                        <td><a href="{{ route('user',$user->id) }}"><i class="fas fa-user pr-2"></i></a>
+                                            <form method="POST" action="{{ route('active',$user->id)}}">
 
-                                            </select>
+                                                {{csrf_field()}}
+                                                {{ method_field('PATCH') }}
+
+                                                <input name="id" value="{{$user->id}}" type="hidden">
+                                                <input name="active" value="{{$user->active}}" type="hidden">
+                                                <button type="submit" style="background: none; border:none"><i class="fas fa-check"></i></button>
+                                            </form>
+
                                         </td>
-                                        <td><a href="{{ route('user',$user->id) }}"><i class="fas fa-user pr-2"></i></a><i class="fas fa-trash-alt"></i></td>
                                     </tr>
+                                    @endif
                                 @endforeach
 
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary">Saglabāt</button>
                         </div>
                     </div>
                 </div>

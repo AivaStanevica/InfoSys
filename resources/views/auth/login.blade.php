@@ -54,6 +54,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                                <a href ="{{ route('register') }}" class="btn btn-primary">
+                                    Reģistrēties
+                                </a>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}

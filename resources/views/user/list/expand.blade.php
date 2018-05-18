@@ -32,6 +32,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
+                                    @if($user->active==1)
                                     <tr>
                                         <th scope="row">{{$user->id}}</th>
                                         <td>{{$user->name}}  {{$user->surname}}</td>
@@ -48,8 +49,19 @@
                                         <td>{{$user->bank_account}}</td>
                                         <td>{{$user->person_code}}</td>
                                         <td>{{$user->description}}</td>
-                                        <td><i class="fas fa-user pr-2"></i><i class="fas fa-trash-alt"></i></td>
+                                        <td><a href="{{ route('user',$user->id) }}"><i class="fas fa-user pr-2"></i></a><i class="fas fa-trash-alt"></i>
+                                            <form method="POST" action="{{ route('active',$user->id)}}">
+
+                                                {{csrf_field()}}
+                                                {{ method_field('PATCH') }}
+
+                                                <input name="id" value="{{$user->id}}" type="hidden">
+                                                <input name="active" value="{{$user->active}}" type="hidden">
+                                                <button type="submit" style="background: none; border:none"><i class="fas fa-times"></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
+                                    @endif
                                 @endforeach
 
                                 </tbody>
