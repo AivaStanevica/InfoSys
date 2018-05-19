@@ -11,4 +11,8 @@ class Project extends Model
     public function transactions(){
         return $this->hasMany('App\Transaction');
     }
+
+    public function uploads(){
+        return $this->hasMany('App\Transaction');
+    }
 }

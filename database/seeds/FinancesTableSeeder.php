@@ -17,5 +17,14 @@ class FinancesTableSeeder extends Seeder
                 'description' => 'Test1',
                 'sum' => ('300.40'),
         ]);
+        DB::table('folders')->insert([
+            'name' => 'Finanses',
+            'description' => 'Test1',
+        ]);
+        DB::table('uploads')->insert([
+            'name' => 'budžets2018',
+            'folder_id'=>'1',
+            'description' => 'Test1',
+        ]);
     }
 }

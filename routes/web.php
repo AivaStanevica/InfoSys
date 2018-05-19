@@ -58,15 +58,6 @@ Route::post('/roles', 'RolesController@store')->name('roleStore')->middleware('a
 
 Route::get('/role/list', 'RolesController@userRole')->name('userRole')->middleware('auth');
 
-
-/*
- * Permissions routes
- */
-
-Route::get('/permissions', function () {
-    return view('user.permissions');
-})->name('permissions')->middleware('auth');
-
 /*
  * Finance routes
  */
@@ -91,3 +82,13 @@ Route::post('/projects', 'ProjectsController@store')->name('projectStore')->midd
 Route::get('/inventory', function () {
     return view('inventory.show');
 })->name('inventory')->middleware('auth');
+
+/*
+ * File storage routes
+ */
+
+Route::get('/uploads/{id?}', 'UploadsController@show')->name('uploads');
+
+Route::post('/uploads/.*', 'FoldersController@store')->name('folderStore');
+
+Route::post('/uploads', 'UploadsController@store')->name('uploadsStore')->middleware('auth');
