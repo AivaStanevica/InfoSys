@@ -23,15 +23,6 @@ class UsersTableSeeder extends Seeder
                 'updated_at'=>date("Y-m-d H:i:s"),
             ],
             [
-                'name' => 'user',
-                'email' => 'user@user.com',
-                'password' => bcrypt('p@55W0rd'),
-                'role_id'=>'2',
-                'active'=>'1',
-                'created_at'=>date("Y-m-d H:i:s"),
-                'updated_at'=>date("Y-m-d H:i:s"),
-            ],
-            [
                 'name' => 'user2',
                 'email' => 'user2@user.com',
                 'password' => bcrypt('p@55W0rd'),
@@ -50,5 +41,24 @@ class UsersTableSeeder extends Seeder
                 'updated_at'=>date("Y-m-d H:i:s"),
             ]
         ]);
+
+        DB::table('users')->insert(
+            [
+                'name' => 'Andris',
+                'surname'=>'Liepiņš',
+                'email' => 'andris.liepins@test.com',
+                'password' => bcrypt('p@55W0rd'),
+                'role_id'=>'2',
+                'direction'=>'1',
+                'phone'=>'27943580',
+                'student_id'=>'al56731',
+                'course'=>'2',
+                'study_program'=>'2',
+                'email2'=>'andris.liepins@datoriki.lv',
+                'active'=>'1',
+                'created_at'=>date("Y-m-d H:i:s"),
+                'updated_at'=>date("Y-m-d H:i:s"),
+            ]
+        );
     }
 }

@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('user_id');
             $table->integer('finance_id');
-            $table->integer('project_id');
+            $table->integer('project_id')->nullable();
             $table->string('file')->nullable();
             $table->integer('error')->default(0);
             $table->timestamps();

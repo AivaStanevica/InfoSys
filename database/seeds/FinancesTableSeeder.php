@@ -26,5 +26,8 @@ class FinancesTableSeeder extends Seeder
             'folder_id'=>'1',
             'description' => 'Test1',
         ]);
+        DB::table('storages')->insert([
+            'name' => 'MT',
+        ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStudiesTable extends Migration
+class CreateLendTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class CreateStudiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('studies', function (Blueprint $table) {
+        Schema::create('lend', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('name');
+            $table->integer('inventory_id');
+            $table->integer('lent_by');
+            $table->string('lent_to');
+            $table->string('lent_till')->nullable();
+            $table->string('number');
+            $table->string('email');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ class CreateStudiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studies');
+        Schema::dropIfExists('lend');
     }
 }

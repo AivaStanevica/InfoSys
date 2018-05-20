@@ -42,6 +42,7 @@
                                 <div class="form-group col-md-2 col-lg-2">
                                     <label for="project">Projekts</label>
                                     <select id="project" class="form-control" name="project">
+                                        <option value=""></option>
                                         @foreach($projects as $project)
                                         <option value="{{$project->id}}">{{$project->name}}</option>
                                         @endforeach
@@ -95,7 +96,7 @@
                                         <td>{{$action->description}}</td>
 
                                         <td>{{$action->finance->name}}</td>
-                                        <td>{{$action->project->name}}</td>
+                                        <td>{{$action->project['name']}}</td>
 
                                         {{--<td><input type="checkbox" {{$user->roles->hasPermission('show_finance_entry') ? 'checked' : '' }} name="show_finance_entry"></td>--}}
                                         <td>

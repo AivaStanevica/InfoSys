@@ -17,6 +17,6 @@ class StudiesTableSeeder extends Seeder
 
         foreach ($studyPrograms as $studyProgram)
 
-        Studies::create(['study_program'=>$studyProgram]);
+        Studies::create(['name'=>$studyProgram]);
     }
 }

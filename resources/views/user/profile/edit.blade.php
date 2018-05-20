@@ -55,7 +55,7 @@
                                     <label for="">Studiju programma</label>
                                     <select id="studyProgram" class="form-control" name="studyProgram">
                                         @foreach($studies as $study)
-                                            <option value="{{$study->id}}" @if ($study->study_program==$user->study_program) selected @endif>{{$study->study_program}}</option>
+                                            <option value="{{$study->id}}" @if ($study->name==$user->study_program) selected @endif>{{$study->study_program}}</option>
                                         @endforeach
                                     </select>
                                 </div>

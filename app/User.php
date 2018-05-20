@@ -41,4 +41,8 @@ class User extends Authenticatable
 
     }
 
+    public function lend(){
+        return $this->hasMany('App\Lend');
+    }
+
 }

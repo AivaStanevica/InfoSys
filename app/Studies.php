@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Studies extends Model
 {
-    protected $fillable = ['study_program'];
+    protected $fillable = ['name'];
 
     public function users(){
         return $this->belongsToMany('App\User');

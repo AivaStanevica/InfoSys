@@ -79,9 +79,22 @@ Route::post('/projects', 'ProjectsController@store')->name('projectStore')->midd
  * Inventory routes
  */
 
-Route::get('/inventory', function () {
-    return view('inventory.show');
-})->name('inventory')->middleware('auth');
+Route::get('/inventory/{id?}', 'InventoryController@show')->name('inventory')->middleware('auth');
+
+Route::post('/inventory', 'InventoryController@store')->name('inventoryStore')->middleware('auth');
+
+Route::post('/inventory/.*', 'StorageController@store')->name('storageStore')->middleware('auth');
+
+Route::post('/inventory/type', 'StorageController@storeType')->name('typeStore')->middleware('auth');
+
+Route::post('/inventory/lend/.*', 'LendController@store')->name('lendInventory')->middleware('auth');
+
+Route::post('/inventory/sell', 'InventoryController@sold')->name('sellInventory')->middleware('auth');
+
+Route::patch('/inventory/units', 'InventoryController@countUnits')->name('countUnits')->middleware('auth');
+
+Route::patch('/inventory/lend/.*', 'InventoryController@avaliable')->name('avaliable')->middleware('auth');
+
 
 /*
  * File storage routes

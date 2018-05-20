@@ -14,8 +14,4 @@ class Permission extends Model
         return $this->belongsToMany('App\Role');
     }
 
-//    public function hasRole($role){
-//
-//        return $this->roles->contains('name',$role);
-//    }
 }
